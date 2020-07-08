@@ -23,4 +23,14 @@ subprocess.Popen(command.split())
 command = 'docker-compose up -d'
 subprocess.Popen(command.split())
 
+command = '/usr/share/grafana/conf/provisioning/datasources'
 
+# TODO 
+#     - replace USER_NAME and USER_PASSWORD in datasource_template.yaml
+#     - store substituted version in container grafana at /usr/share/grafana/conf/provisioning/datasources 
+#     - check out how to create dashboard graph automatically 
+
+# Next steps:
+#     - maybe use memory usage as first metric#     
+#           - use python to query data from lachesis api (dunno anything about api yet)
+#     - use telegraf as input method for influxdb 
