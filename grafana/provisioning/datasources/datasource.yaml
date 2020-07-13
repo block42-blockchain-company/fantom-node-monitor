@@ -32,7 +32,7 @@ datasources:
     # <string> basic auth username
     basicAuthUser: admin
     # <string> Deprecated, use secureJsonData.basicAuthPassword
-    basicAuthPassword: admin123
+    basicAuthPassword:
     # <bool> enable/disable with credentials headers
     withCredentials: false
     # <bool> mark as default datasource. Max one per org

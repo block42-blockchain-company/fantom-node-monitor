@@ -1,4 +1,10 @@
 import subprocess
+import requests
+from urllib.parse import urlencode, quote_plus
+
+from common import consts
+
+
 
 INFLUXDB_ADMIN_USER="admin"
 INFLUXDB_ADMIN_PASSWORD="admin123"
@@ -35,7 +41,13 @@ spin_up_containers.wait()
 
 
 print("\n==== Create Database ====")
-command = 'curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE node_metrics"'
+create_db = "q=CREATE DATABASE node_metrics"
+response = requests.post(consts.DATABASE_URL + "query" + urlencode(create_db, quote_via=quote_plus))
+print(response.text)
+
+print("\n==== Start Monitoring Service ====")
+
+command = "python3 ./scripts/monitor.py"
 create_db = subprocess.Popen(command.split())
 
 
