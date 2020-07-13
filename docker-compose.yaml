@@ -12,20 +12,23 @@ services:
       - grafana-volume:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning/
       - ./grafana/dashboard/fantom_overview.json:/var/lib/grafana/dashboards/fantom_overview.json
-  influxdb:
-    image: influxdb
-    container_name: influxdb
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
     restart: always
     ports:
-      - 8086:8086
+      - 9090:9090
     networks:
       - monitoring
     volumes:
-      - influxdb-volume:/var/lib/influxdb
+      - ./prometheus/config.yaml:/etc/prometheus/prometheus.yml
+      - prometheus-volume:/prometheus
+      
 networks:
   monitoring:
 volumes:
   grafana-volume:
     external: true
-  influxdb-volume:
+  prometheus-volume:
     external: true
