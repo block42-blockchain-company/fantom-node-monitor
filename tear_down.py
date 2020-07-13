@@ -1,6 +1,6 @@
 import subprocess
 
-print("Fantom Node Monitor teardown!")
+print("==== Fantom Node Monitor Teardown ====\n")
 
 command = "docker-compose down"
 shutdown = subprocess.Popen(command.split())
