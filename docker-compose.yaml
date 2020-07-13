@@ -22,9 +22,8 @@ services:
     networks:
       - monitoring
     volumes:
-      - ./prometheus/config.yaml:/etc/prometheus/prometheus.yml
       - prometheus-volume:/prometheus
-      
+
 networks:
   monitoring:
 volumes:
