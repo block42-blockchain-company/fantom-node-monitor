@@ -34,10 +34,8 @@ spin_up_containers = subprocess.Popen(command.split())
 spin_up_containers.wait()
 
 
-print("\n==== Set Datasource ====")
-command = 'docker cp ./res/datasource.yaml grafana:/usr/share/grafana/conf/provisioning/datasources/default.yaml'
-subprocess.Popen(command.split())
-
+print("\n==== Create Database ====")
+command = "CREATE DATABASE node_metrics"
 
 print("\n==== Setup complete! ====")
 
