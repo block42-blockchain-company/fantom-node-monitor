@@ -3,7 +3,10 @@ import subprocess
 print("Fantom Node Monitor teardown!")
 
 command = "docker-compose down"
-subprocess.Popen(command.split())
+shutdown = subprocess.Popen(command.split())
+shutdown.wait()
+
+
 
 command = "docker network rm monitoring"
 subprocess.Popen(command.split())
