@@ -20,6 +20,7 @@ command = '''docker run --rm -e INFLUXDB_HTTP_AUTH_ENABLED=true \
          -v /var/lib/influxdb:/var/lib/influxdb \
          -v /etc/influxdb/scripts:/docker-entrypoint-initdb.d \
          influxdb /init-influxdb.sh '''.format(ADMIN_USER, ADMIN_PASSWORD)
+print(command)
 subprocess.Popen(command.split())
 
 print("Start Grafana and InfluxDB Container")
