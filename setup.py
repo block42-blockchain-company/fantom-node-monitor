@@ -3,6 +3,8 @@ import subprocess
 ADMIN_USER="admin"
 ADMIN_PASSWORD="admin123"
 
+print("Initiate Fantom Node Monitor setup!")
+
 command = "docker network create monitoring"
 subprocess.Popen(command.split())
 
@@ -28,8 +30,13 @@ print("Set Datasource")
 command = 'docker cp ./res/datasource.yaml grafana:/usr/share/grafana/conf/provisioning/datasources/default.yaml'
 subprocess.Popen(command.split())
 
+print("Set Datasource")
+command = 'docker cp ./res/datasource.yaml grafana:/usr/share/grafana/conf/provisioning/datasources/default.yaml'
+subprocess.Popen(command.split())
+
 command = 'docker cp ./res/datasource.yaml grafana:/usr/share/grafana/conf/provisioning/datasources/default.yaml'
 
+print("Setup complete!")
 
 # TODO 
 #     - replace USER_NAME and USER_PASSWORD in datasource_template.yaml
