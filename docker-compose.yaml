@@ -11,6 +11,7 @@ services:
     volumes:
       - grafana-volume:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning/
+      - ./grafana/dashboard/fantom_overview.json:/var/lib/grafana/dashboards/fantom_overview.json
   influxdb:
     image: influxdb
     container_name: influxdb
