@@ -35,7 +35,9 @@ spin_up_containers.wait()
 
 
 print("\n==== Create Database ====")
-command = "CREATE DATABASE node_metrics"
+command = 'curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE node_metrics"'
+create_db = subprocess.Popen(command.split())
+
 
 print("\n==== Setup complete! ====")
 
