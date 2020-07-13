@@ -1,5 +1,20 @@
 from common import consts
 from influxdb import InfluxDBClient
+import datetime
+
+
+def getTimeStamp():
+    return str(datetime.datetime.now().timestamp)
+
+payload = [
+    {
+        "measurement": consts.TABLE_NAME,
+        "fields": {
+            "percentage": 0.64,
+            "status": "synced"
+        }
+    }
+]
 
 
 client = InfluxDBClient(host="localhost",
@@ -10,13 +25,11 @@ client = InfluxDBClient(host="localhost",
 client.create_database(consts.DATABASE_NAME)
 
 def getMetric(metric):
-
     return 1
 
 def storeMetricToDB(db, payload):
-    response = client.write_points(payload, database=consts.DATABASE_NAME, protocol='line')
+    response = client.write_points(payload, database=consts.DATABASE_NAME, protocol='json')
     print(response)
 
 
-insert_payload = consts.TABLE_NAME + "," + "value=0.20"
-storeMetricToDB(consts.DATABASE_NAME, insert_payload)
+storeMetricToDB(consts.DATABASE_NAME, payload)

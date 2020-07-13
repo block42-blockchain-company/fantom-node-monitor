@@ -1,5 +1,4 @@
 import subprocess
-import requests
 from influxdb import InfluxDBClient
 from common import consts
 
@@ -45,7 +44,7 @@ client.create_database(consts.DATABASE_NAME)
 
 print("\n==== Start Monitoring Service ====")
 
-command = "python3 ./scripts/monitor.py"
+command = "python3 ./monitor.py"
 create_db = subprocess.Popen(command.split())
 
 
