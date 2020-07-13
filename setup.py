@@ -1,7 +1,7 @@
 import subprocess
 
-ADMIN_USER="admin"
-ADMIN_PASSWORD="admin123"
+INFLUXDB_ADMIN_USER="admin"
+INFLUXDB_ADMIN_PASSWORD="admin123"
 
 print("Initiate Fantom Node Monitor setup!")
 
@@ -19,13 +19,13 @@ command = '''docker run --rm -e INFLUXDB_HTTP_AUTH_ENABLED=true \
          -e INFLUXDB_ADMIN_PASSWORD={} \
          -v /var/lib/influxdb:/var/lib/influxdb \
          -v /etc/influxdb/scripts:/docker-entrypoint-initdb.d \
-         influxdb /init-influxdb.sh '''.format(ADMIN_USER, ADMIN_PASSWORD)
+         influxdb /init-influxdb.sh '''.format(INFLUXDB_ADMIN_USER, INFLUXDB_ADMIN_PASSWORD)
 print(command)
 subprocess.Popen(command.split())
 
 print("Start Grafana and InfluxDB Container")
 command = 'docker-compose up -d'
-subprocess.Popen(subprocess.DETACHED_PROCESS, command.split())
+subprocess.Popen(command.split())
 
 print("Set Datasource")
 command = 'docker cp ./res/datasource.yaml grafana:/usr/share/grafana/conf/provisioning/datasources/default.yaml'

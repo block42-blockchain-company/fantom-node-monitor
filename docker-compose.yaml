@@ -10,6 +10,7 @@ services:
       - monitoring
     volumes:
       - grafana-volume:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning/
   influxdb:
     image: influxdb
     container_name: influxdb
