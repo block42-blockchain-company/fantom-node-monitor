@@ -1,6 +1,9 @@
 import subprocess
 
-print("Initiate Fantom Node Monitor teardown!")
+print("Fantom Node Monitor teardown!")
+
+command = "docker-compose down"
+subprocess.Popen(command.split())
 
 command = "docker network rm monitoring"
 subprocess.Popen(command.split())
