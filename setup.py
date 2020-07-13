@@ -1,13 +1,7 @@
 import subprocess
 import requests
-from urllib.parse import urlencode, quote_plus
-
+from influxdb import InfluxDBClient
 from common import consts
-
-
-
-INFLUXDB_ADMIN_USER="admin"
-INFLUXDB_ADMIN_PASSWORD="admin123"
 
 print("==== Initiate Fantom Node Monitor Setup ====\n")
 
@@ -29,7 +23,7 @@ command = '''docker run --rm -e INFLUXDB_HTTP_AUTH_ENABLED=true \
          -e INFLUXDB_ADMIN_PASSWORD={} \
          -v /var/lib/influxdb:/var/lib/influxdb \
          -v /etc/influxdb/scripts:/docker-entrypoint-initdb.d \
-         influxdb /init-influxdb.sh '''.format(INFLUXDB_ADMIN_USER, INFLUXDB_ADMIN_PASSWORD)
+         influxdb /init-influxdb.sh '''.format(consts.INFLUXDB_ADMIN_USER, consts.INFLUXDB_ADMIN_PASSWORD)
 init_influxdb = subprocess.Popen(command.split())
 init_influxdb.wait()
 
@@ -41,9 +35,13 @@ spin_up_containers.wait()
 
 
 print("\n==== Create Database ====")
-create_db = "q=CREATE DATABASE node_metrics"
-response = requests.post(consts.DATABASE_URL + "query" + urlencode(create_db, quote_via=quote_plus))
-print(response.text)
+client = InfluxDBClient(host="localhost",
+                        port=8086,
+                        username=consts.INFLUXDB_ADMIN_USER,
+                        password=consts.INFLUXDB_ADMIN_PASSWORD)
+
+client.create_database(consts.DATABASE_NAME)
+
 
 print("\n==== Start Monitoring Service ====")
 
