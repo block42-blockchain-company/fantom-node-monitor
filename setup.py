@@ -29,16 +29,16 @@ spin_up_containers.wait()
 
 print("\n==== Download and Install Node_Exporter natively ====")
 
-command = "wget -O ./binary/node_exporter-1.0.1.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz"
+command = "wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz"
 download_node_exporter = subprocess.Popen(command.split())
 download_node_exporter.wait()
 
-command = "tar -xzf ./binary/node_exporter-1.0.1.linux-amd64.tar.gz -C ./binary"
-download_node_exporter = subprocess.Popen(command.split())
-download_node_exporter.wait()
+command = "tar -xzf ./node_exporter-1.0.1.linux-amd64.tar.gz -C ./binary"
+unwrap_node_exporter = subprocess.Popen(command.split())
+unwrap_node_exporter.wait()
 
 command = "./binary/node_exporter-1.0.1.linux-amd64/node_exporter"
-download_node_exporter = subprocess.Popen(command.split())
+start_node_exporter = subprocess.Popen(command.split())
 
 
 
