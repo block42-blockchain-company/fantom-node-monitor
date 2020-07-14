@@ -4,10 +4,7 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: always
-    ports:
-      - 3000:3000
-    networks:
-      - host
+    network_mode: host
     volumes:
       - grafana-volume:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning/
@@ -17,11 +14,9 @@ services:
     image: prom/prometheus
     container_name: prometheus
     restart: always
-    ports:
-      - 9090:9090
-    networks:
-      - host
+    network_mode: host
     volumes:
+      - ./prometheus/config.yaml:/etc/prometheus/prometheus.yml
       - prometheus-volume:/prometheus
 
 volumes:
