@@ -41,5 +41,4 @@ command = "./binary/node_exporter-1.0.1.linux-amd64/node_exporter"
 start_node_exporter = subprocess.Popen(command.split())
 
 
-
 print("\n==== Setup complete! ====")
