@@ -1,7 +1,5 @@
-DATABASE_URL = "http://localhost"
-DATABASE_PORT = "8086"
-INFLUXDB_ADMIN_USER="admin"
-INFLUXDB_ADMIN_PASSWORD="admin123"
-DATABASE_NAME = "node_metrics"
+BINARY_FOLDER = "binary"
 
-TABLE_NAME = "memory_usage"
+NODE_EXPORTER_PORT = "9100"
+NODE_EXPORTER_TAR_FILE = "node_exporter-1.0.1.linux-amd64.tar.gz"
+
