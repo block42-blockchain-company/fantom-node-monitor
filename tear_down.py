@@ -7,7 +7,7 @@ command = "docker-compose down"
 shutdown_container = subprocess.Popen(command.split())
 shutdown_container.wait()
 
-command = "lsof -i tcp:[{}]".format(consts.NODE_EXPORTER_PORT)
+command = "lsof -ti tcp:{} | xargs kill".format(consts.NODE_EXPORTER_PORT)
 shutdown_node_exporter = subprocess.Popen(command.split())
 
 command = "docker volume rm grafana-volume"
