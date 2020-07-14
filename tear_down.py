@@ -13,6 +13,7 @@ stdout, stderr = shutdown_node_exporter.communicate()
 pid = stdout.decode("utf-8")
 
 if pid.isdigit():
+    print("Kill PID: {}".format(pid))
     command = "kill {}".format(pid)
     kill_node_exporter = subprocess.Popen(command.split())
 
