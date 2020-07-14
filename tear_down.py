@@ -19,4 +19,6 @@ rm_network.wait()
 rm_grafana_volume.wait()
 rm_prometheus_volume.wait()
 
+# TODO: Shut down Node_Exporter!
+
 print("Teardown complete!")
