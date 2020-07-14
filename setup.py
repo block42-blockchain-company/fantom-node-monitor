@@ -37,13 +37,13 @@ if not os.path.exists(dir_path + consts.BINARY_FOLDER + consts.NODE_EXPORTER_TAR
     download_node_exporter = subprocess.Popen(command.split())
     download_node_exporter.wait()
 
-    command = "tar -xzf ./{}/node_exporter-1.0.1.linux-amd64.tar.gz -C {}".format(consts.BINARY_FOLDER, consts.BINARY_FOLDER)
+    command = "tar -xzf ./{}/{} -C {}".format(consts.BINARY_FOLDER, consts.NODE_EXPORTER_TAR_FILE, consts.BINARY_FOLDER)
     unwrap_node_exporter = subprocess.Popen(command.split())
     unwrap_node_exporter.wait()
 
+    # TODO: Set up service for Node_Exporter
     command = "./binary/node_exporter-1.0.1.linux-amd64/node_exporter"
     start_node_exporter = subprocess.Popen(command.split())
 
-# TODO: Set up service for Node_Exporter
 
 print("\n==== Setup complete! ====")
