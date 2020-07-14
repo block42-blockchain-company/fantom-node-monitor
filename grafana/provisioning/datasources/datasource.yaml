@@ -12,4 +12,4 @@ datasources:
     url: http://localhost:9090
     isDefault: true
     version: 1
-    editable: truec
+    editable: true

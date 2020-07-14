@@ -7,7 +7,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - monitoring
+      - host
     volumes:
       - grafana-volume:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning/
@@ -20,12 +20,10 @@ services:
     ports:
       - 9090:9090
     networks:
-      - monitoring
+      - host
     volumes:
       - prometheus-volume:/prometheus
 
-networks:
-  monitoring:
 volumes:
   grafana-volume:
     external: true

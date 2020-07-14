@@ -4,7 +4,7 @@ from common import consts
 print("==== Fantom Node Monitor Setup ====\n")
 
 command = "docker network create monitoring"
-network_setup = subprocess.Popen(command.split())
+#network_setup = subprocess.Popen(command.split())
 
 command = "docker volume create grafana-volume"
 grafana_volume_creation = subprocess.Popen(command.split())
@@ -12,8 +12,8 @@ grafana_volume_creation = subprocess.Popen(command.split())
 command = "docker volume create prometheus-volume"
 prometheus_volume_creation = subprocess.Popen(command.split())
 
+#network_setup.wait()
 grafana_volume_creation.wait()
-network_setup.wait()
 prometheus_volume_creation.wait()
 
 
@@ -22,10 +22,6 @@ command = 'docker-compose up -d'
 spin_up_containers = subprocess.Popen(command.split())
 spin_up_containers.wait()
 
-#print("\n==== Start Monitoring Service ====")
-# Note: the script below is only for basic testing and has nothing to do with the actual monitoring!
-#command = "python3 ./monitor.py"
-#create_db = subprocess.Popen(command.split())
 
 print("\n==== Download and Install Node_Exporter natively ====")
 
