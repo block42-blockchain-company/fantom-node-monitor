@@ -1,0 +1,3 @@
+[submodule "LachesisExporter"]
+	path = exporter/lachesis_exporter
+	url = https://github.com/block42-blockchain-company/lachesis_exporter.git
