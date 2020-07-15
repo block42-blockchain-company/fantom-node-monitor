@@ -22,7 +22,7 @@ spin_up_containers.wait()
 
 
 print("\n==== Start Lachesis_Exporter ====")
-command = "./{}/lachesis_exporter".format(consts.BINARY_FOLDER)
+command = "./{}/lachesis_exporter/lachesis_exporter_linux_amd64".format(consts.BINARY_FOLDER)
 start_lachesis_exporter = subprocess.Popen(command.split())
 
 
