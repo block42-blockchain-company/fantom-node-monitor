@@ -32,8 +32,8 @@ if not os.path.exists(dir_path + consts.BINARY_FOLDER + consts.NODE_EXPORTER_TAR
 
     print("Downloading Node_Exporter 1.0.1")
     command = \
-        "wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/{}" \
-        " -P ./{}".format(consts.NODE_EXPORTER_TAR_FILE, consts.BINARY_FOLDER)
+        "wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz" \
+        " -P ./{}".format(consts.BINARY_FOLDER)
     download_node_exporter = subprocess.Popen(command.split())
     download_node_exporter.wait()
 
