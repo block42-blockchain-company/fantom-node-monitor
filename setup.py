@@ -21,15 +21,16 @@ spin_up_containers = subprocess.Popen(command.split())
 spin_up_containers.wait()
 
 
-print("\n==== Download and Install Node_Exporter natively ====")
+print("\n==== Start Lachesis_Exporter ====")
+command = "./{}/lachesis_exporter".format(consts.BINARY_FOLDER)
+start_lachesis_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = start_lachesis_exporter.communicate()
+
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-if not os.path.isdir(dir_path + consts.BINARY_FOLDER):
-    command = "mkdir {}".format(consts.BINARY_FOLDER)
-    mkdir = subprocess.Popen(command.split())
-    mkdir.wait()
-
 if not os.path.exists(dir_path + consts.BINARY_FOLDER + consts.NODE_EXPORTER_TAR_FILE):
+    print("\n==== Download Node_Exporter ====")
+
     print("Downloading Node_Exporter 1.0.1")
     command = \
         "wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/{}" \
@@ -41,9 +42,10 @@ if not os.path.exists(dir_path + consts.BINARY_FOLDER + consts.NODE_EXPORTER_TAR
     unwrap_node_exporter = subprocess.Popen(command.split())
     unwrap_node_exporter.wait()
 
-    # TODO: Set up service for Node_Exporter
-    command = "./binary/node_exporter-1.0.1.linux-amd64/node_exporter"
-    start_node_exporter = subprocess.Popen(command.split())
 
+print("\n==== Start Node_Exporter ====")
+command = "./{}/node_exporter-1.0.1.linux-amd64/node_exporter".format(consts.BINARY_FOLDER)
+start_node_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = start_node_exporter.communicate()
 
 print("\n==== Setup complete! ====")
