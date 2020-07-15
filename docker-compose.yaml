@@ -1,29 +1,26 @@
-version: "1"
+version: "2"
 services:
   grafana:
     image: grafana/grafana
     container_name: grafana
     restart: always
-    ports:
-      - 3000:3000
-    networks:
-      - monitoring
+    network_mode: host
     volumes:
       - grafana-volume:/var/lib/grafana
-  influxdb:
-    image: influxdb
-    container_name: influxdb
+      - ./grafana/provisioning:/etc/grafana/provisioning/
+      - ./grafana/dashboard/fantom_overview.json:/var/lib/grafana/dashboards/fantom_overview.json
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
     restart: always
-    ports:
-      - 8086:8086
-    networks:
-      - monitoring
+    network_mode: host
     volumes:
-      - influxdb-volume:/var/lib/influxdb
-networks:
-  monitoring:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-volume:/prometheus
+
 volumes:
   grafana-volume:
     external: true
-  influxdb-volume:
+  prometheus-volume:
     external: true
