@@ -2,7 +2,7 @@ import subprocess
 from common import consts
 
 def shutDownProcessByPort(port):
-    command = "lsof -ti :{}".format(consts.NODE_EXPORTER_PORT)
+    command = "lsof -ti :{}".format(port)
     shutdown_node_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = shutdown_node_exporter.communicate()
     pid = stdout.decode("utf-8")
