@@ -23,8 +23,7 @@ spin_up_containers.wait()
 
 print("\n==== Start Lachesis_Exporter ====")
 command = "./{}/lachesis_exporter".format(consts.BINARY_FOLDER)
-start_lachesis_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-stdout, stderr = start_lachesis_exporter.communicate()
+start_lachesis_exporter = subprocess.Popen(command.split())
 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -45,7 +44,6 @@ if not os.path.exists(dir_path + consts.BINARY_FOLDER + consts.NODE_EXPORTER_TAR
 
 print("\n==== Start Node_Exporter ====")
 command = "./{}/node_exporter-1.0.1.linux-amd64/node_exporter".format(consts.BINARY_FOLDER)
-start_node_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-stdout, stderr = start_node_exporter.communicate()
+start_node_exporter = subprocess.Popen(command.split())
 
 print("\n==== Setup complete! ====")
