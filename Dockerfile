@@ -7,6 +7,9 @@ RUN apt-get update
 
 # General
 RUN apt-get install -y python3
+RUN apt-get install -y golang 
+RUN apt-get install -y git
+
 
 # Grafana
 RUN apt-get install -y apt-transport-https
@@ -14,9 +17,12 @@ RUN apt-get install -y software-properties-common wget
 RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
 RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list 
 
-# Prometheus
 RUN apt-get update
 RUN apt-get install -y grafana
+
+RUN go get github.com/godbus/dbus
+RUN go get github.com/prometheus/node_exporter ; exit 0
+RUN make ${GOPATH-$HOME/go}/src/github.com/prometheus/node_exporter
 
 
 # --- Configure ---
