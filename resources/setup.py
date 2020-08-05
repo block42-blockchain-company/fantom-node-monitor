@@ -2,14 +2,9 @@ import subprocess
 import os
 from common import consts
 
-
-
-
-
+print("Start this Party")
 command = "service grafana-server start"
 grafana_volume_creation = subprocess.Popen(command.split())
-
-
 
 '''
 print("\n==== Start Lachesis_Exporter ====")
