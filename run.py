@@ -18,12 +18,8 @@ command = 'docker run -d \
   --net="host" \
   --pid="host" \
   -v "/:/host:ro,rslave" \
-  fantom-node-monitor \
-  --path.rootfs=/host'
+  fantom-node-monitor'
 
 node_monitor_startup = subprocess.Popen(command.split())
 node_monitor_startup.wait()
 
-# Persist
-command = "tail -f /dev/null"
-node_monitor_startup = subprocess.Popen(command.split())

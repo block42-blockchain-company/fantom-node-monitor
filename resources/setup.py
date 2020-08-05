@@ -6,6 +6,11 @@ print("Start this Party")
 command = "service grafana-server start"
 grafana_volume_creation = subprocess.Popen(command.split())
 
+# Persist
+command = "tail -f /dev/null"
+node_monitor_startup = subprocess.Popen(command.split())
+node_monitor_startup.wait()
+
 '''
 print("\n==== Start Lachesis_Exporter ====")
 command = "./{}/lachesis_exporter/lachesis_exporter_linux_amd64".format(consts.BINARY_FOLDER)
