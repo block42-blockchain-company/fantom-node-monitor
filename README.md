@@ -17,7 +17,7 @@ created and all exporters are started.
 
 Start the monitor with the following command:
 ```shell
-python3 ./setup.py
+docker run -d --name fantom-node-monitor fantom-node-monitor
 ```
 
 You can view the dashboard by accessing the machine on port 3000.

@@ -3,24 +3,15 @@ import os
 from common import consts
 
 
-print("==== Fantom Node Monitor Setup ====\n")
 
-command = "docker volume create grafana-volume"
+
+
+command = "service grafana-server start"
 grafana_volume_creation = subprocess.Popen(command.split())
 
-command = "docker volume create prometheus-volume"
-prometheus_volume_creation = subprocess.Popen(command.split())
-
-grafana_volume_creation.wait()
-prometheus_volume_creation.wait()
 
 
-print("\n==== Start Grafana and Prometheus Container ====")
-command = 'docker-compose up -d'
-spin_up_containers = subprocess.Popen(command.split())
-spin_up_containers.wait()
-
-
+'''
 print("\n==== Start Lachesis_Exporter ====")
 command = "./{}/lachesis_exporter/lachesis_exporter_linux_amd64".format(consts.BINARY_FOLDER)
 start_lachesis_exporter = subprocess.Popen(command.split())
@@ -47,3 +38,4 @@ command = "./{}/node_exporter-1.0.1.linux-amd64/node_exporter".format(consts.BIN
 start_node_exporter = subprocess.Popen(command.split())
 
 print("\n==== Setup complete! ====")
+'''
