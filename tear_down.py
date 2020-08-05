@@ -6,6 +6,7 @@ def shutDownProcessByPort(port):
     shutdown_node_exporter = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = shutdown_node_exporter.communicate()
     pid = stdout.decode("utf-8")
+    print(pid)
 
     command = "kill {}".format(pid)
     subprocess.Popen(command.split())
@@ -23,7 +24,7 @@ rm_grafana_volume = subprocess.Popen(command.split())
 command = "docker volume rm prometheus-volume"
 rm_prometheus_volume = subprocess.Popen(command.split())
 
-shutDownProcessByPort(consts.NODE_EXPORTER_PORT)
+command = "docker stop node_exporter"
 shutDownProcessByPort(consts.LACHESIS_EXPORTER_PORT)
 
 rm_grafana_volume.wait()

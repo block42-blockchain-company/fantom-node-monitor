@@ -11,6 +11,12 @@ By spinning up the fantom node monitor, all configurations and dashboards are
 created and all exporters are started.
 <br>
 
+## Prerequists
+docker
+docker-compose
+python3
+go-lachesis node
+
 ## Getting started
 
 ### Setup

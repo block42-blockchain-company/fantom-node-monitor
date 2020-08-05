@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import subprocess
 import os
 from common import consts
@@ -31,7 +33,9 @@ command = 'docker run -d \
   --pid="host" \
   -v "/:/host:ro,rslave" \
   quay.io/prometheus/node-exporter \
-  --path.rootfs=/host'
+  --path.rootfs=/host \
+  --restart unless-stopped \
+  --name node_exporter'
 start_node_exporter = subprocess.Popen(command.split())
 
 print("\n==== Setup complete! ====")
