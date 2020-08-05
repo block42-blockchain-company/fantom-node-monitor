@@ -22,7 +22,7 @@ RUN apt-get install -y grafana
 # --- Configure ---
 
 # General
-ADD . /home/node-monitor/
+ADD . /home/
 
 # Grafana
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/
@@ -31,5 +31,5 @@ ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboa
 
 #/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
-CMD ["/home/node-monitor/resources/setup.py"]
+CMD ["/home/resources/setup.py"]
 ENTRYPOINT ["python3"]

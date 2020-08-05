@@ -15,9 +15,7 @@ prometheus_volume_creation.wait()
 '''
 
 command = 'docker run -d \
-  --net="host" \
-  --pid="host" \
-  -v "/:/host:ro,rslave" \
+  --name ftm-node-monitor \
   fantom-node-monitor'
 
 node_monitor_startup = subprocess.Popen(command.split())
