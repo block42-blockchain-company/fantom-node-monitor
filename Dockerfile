@@ -1,22 +1,30 @@
 FROM ubuntu:18.04
 
-RUN apt-get update
-
-
 # --- INSTALL ---
 
 # General
-RUN apt-get install -y python3
-RUN apt-get install -y golang 
-RUN apt-get install -y git
+RUN apt-get update
+RUN apt-get install -y git wget python3
+
+
+# Golang
+RUN mkdir /home/go
+RUN apt install golang -y
+#RUN cd /tmp
+#RUN wget https://dl.google.com/go/go1.14.6.linux-amd64.tar.gz
+#RUN tar -xvf go1.14.6.linux-amd64.tar.gz
+#RUN mv go /usr/local
+RUN export GOROOT=/usr/lib/go
+RUN export GOPATH=$HOME/go
+RUN export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#RUN . ~/.profile
 
 
 # Grafana
 RUN apt-get install -y apt-transport-https
-RUN apt-get install -y software-properties-common wget
+RUN apt-get install -y software-properties-common
 RUN wget -q -O - https://packages.grafana.com/gpg.key | apt-key add -
-RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list 
-
+RUN echo "deb https://packages.grafana.com/oss/deb stable main" | tee -a /etc/apt/sources.list.d/grafana.list
 RUN apt-get update
 RUN apt-get install -y grafana
 
