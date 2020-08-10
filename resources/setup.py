@@ -13,6 +13,12 @@ node_exporter = subprocess.Popen(command.split())
 command = "service grafana-server start"
 grafana_server = subprocess.Popen(command.split())
 
+# Start Prometheus
+# TODO Create Service for Prometheus
+command = "prometheus --config.file=/etc/prometheus/prometheus.yml"
+prometheus = subprocess.Popen(command.split())
+
+
 # Persist
 command = "tail -f /dev/null"
 node_monitor_startup = subprocess.Popen(command.split())
