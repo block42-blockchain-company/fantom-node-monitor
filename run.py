@@ -5,9 +5,9 @@ print("==== Fantom Node Monitor Setup ====\n")
 # "host" attributes necessary in order for node_exporter to access host machine metrics
 
 command = 'docker run -d \
-  --net="host" \
-  --pid="host" \
-  -v "/:/host:ro,rslave" \
+  --net=host \
+  --pid=host \
+  -v /:/host:ro,rslave \
   --name ftm-node-monitor \
   fantom-node-monitor'
 
