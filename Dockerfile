@@ -31,14 +31,15 @@ RUN make /go/src/github.com/prometheus/node_exporter
 # --- Configure ---
 
 # General
-ADD . /home/
+ADD ./resources/run.py /home/
 
 # Grafana
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/
 ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboards/fantom_overview.json
 
 # Prometheus
+RUN mkdir /data
 ADD ./resources//prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
-CMD ["/home/resources/setup.py"]
+CMD ["/home/resources/run.py"]
 ENTRYPOINT ["python3"]
