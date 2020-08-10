@@ -15,7 +15,7 @@ RUN apt-get install -y grafana
 
 RUN go get github.com/godbus/dbus
 RUN go get github.com/prometheus/node_exporter ; exit 0
-#RUN make /home/go/src/github.com/prometheus/node_exporter
+RUN make /go/src/github.com/prometheus/node_exporter
 
 
 # --- Configure ---
