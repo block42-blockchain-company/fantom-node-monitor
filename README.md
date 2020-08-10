@@ -17,8 +17,10 @@ created and all exporters are started.
 
 Start the monitor with the following command:
 ```shell
-docker run -d --name fantom-node-monitor fantom-node-monitor
+python3 setup.py
 ```
+
+This will spinn up a single docker container including all necessary services and programs.
 
 You can view the dashboard by accessing the machine on port 3000.
 Log in to Grafana using the username "admin" and password "admin".
@@ -30,7 +32,7 @@ It may take some time until the first metrics arrive and are displayed.
 *Note: Be aware that the following will also remove all data collected!*
 Stop the containers and remove all artifcats with:
 ```shell
-python3 ./tear_down.py
+python3 tear_down.py
 ```
 
 ## Current State
@@ -38,3 +40,16 @@ Both Grafana and Prometheus are running in a docker container and using the host
 It is best practise to keep the exporters as close to the application as possible.
 <br>
 This is a minimal version so the whole codebase is likely to change when aiming for a production version!
+
+backup
+# Golang
+RUN mkdir /home/go
+RUN cd /tmp
+RUN wget https://dl.google.com/go/go1.14.6.linux-amd64.tar.gz
+RUN tar -xvf go1.14.6.linux-amd64.tar.gz
+RUN mv go /usr/local
+RUN export GOROOT=/usr/local/go
+RUN export GOPATH=$HOME/go
+RUN export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+RUN . ~/.profile
+RUN go version

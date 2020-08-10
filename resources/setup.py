@@ -3,8 +3,8 @@ import os
 from common import consts
 
 # Start node_exporter
-command = "${GOPATH-$HOME/go}/src/github.com/prometheus/node_exporter/node_exporter --path.rootfs=/host"
-node_exporter = subprocess.Popen(command.split())
+#command = "${GOPATH-$HOME/go}/src/github.com/prometheus/node_exporter/node_exporter --path.rootfs=/host"
+#node_exporter = subprocess.Popen(command.split())
 
 # Start Grafana Server
 command = "service grafana-server start"

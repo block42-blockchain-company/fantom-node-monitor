@@ -1,24 +1,9 @@
-FROM ubuntu:18.04
+FROM golang:1.14.7
 
 # --- INSTALL ---
-
 # General
 RUN apt-get update
 RUN apt-get install -y git wget python3
-
-
-# Golang
-RUN mkdir /home/go
-RUN apt install golang -y
-#RUN cd /tmp
-#RUN wget https://dl.google.com/go/go1.14.6.linux-amd64.tar.gz
-#RUN tar -xvf go1.14.6.linux-amd64.tar.gz
-#RUN mv go /usr/local
-RUN export GOROOT=/usr/lib/go
-RUN export GOPATH=$HOME/go
-RUN export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-#RUN . ~/.profile
-
 
 # Grafana
 RUN apt-get install -y apt-transport-https
@@ -30,7 +15,7 @@ RUN apt-get install -y grafana
 
 RUN go get github.com/godbus/dbus
 RUN go get github.com/prometheus/node_exporter ; exit 0
-RUN make ${GOPATH-$HOME/go}/src/github.com/prometheus/node_exporter
+#RUN make /home/go/src/github.com/prometheus/node_exporter
 
 
 # --- Configure ---
