@@ -27,13 +27,14 @@ RUN go get github.com/godbus/dbus
 RUN go get github.com/prometheus/node_exporter ; exit 0
 RUN make /go/src/github.com/prometheus/node_exporter
 
+# Lachesis Exporter
+RUN go get github.com/block42-blockchain-company/lachesis_exporter
+RUN go install /go/src/github.com/block42-blockchain-company/lachesis_exporter
 
 # --- Configure ---
-
 # General
 ADD ./resources/run.py /home/
 ADD ./resources/common /home/common/
-RUN ls /home/
 
 # Grafana
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/

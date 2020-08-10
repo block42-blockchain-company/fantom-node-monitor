@@ -8,6 +8,9 @@ command = "node_exporter --path.rootfs=/host"
 node_exporter = subprocess.Popen(command.split())
 
 # TODO Create Service for lachesis_exporter
+command = "lachesis_exporter"
+node_exporter = subprocess.Popen(command.split())
+
 
 # Start Grafana Server
 command = "service grafana-server start"
