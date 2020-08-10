@@ -18,7 +18,7 @@ command = 'docker run -d \
   -v /:/host:ro,rslave \
   -v prometheus-volume:/data \
   --name fantom-node-monitor \
-  fantom-node-monitor'
+  block42blockchaincompany/fantom-node-monitor'
 
 node_monitor_startup = subprocess.Popen(command.split())
 node_monitor_startup.wait()
