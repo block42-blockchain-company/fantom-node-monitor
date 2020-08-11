@@ -42,7 +42,7 @@ ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboa
 
 # Prometheus
 RUN mkdir /data
-ADD ./resources//prometheus/prometheus.yml /etc/prometheus/prometheus.yml
+ADD ./resources/prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
 CMD ["/home/run.py"]
 ENTRYPOINT ["python3"]

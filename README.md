@@ -1,12 +1,11 @@
 # Fantom Node Monitor
 
-This setup lets you monitor your fantom node. Key elements are of course the Grafana dashboard for visualization and Prometheus as data source. Prometheus provides interfaces for add-ons, of which the following are integrated.
+This setup lets you monitor your Fantom node. Key elements are the Grafana dashboard for visualization and Prometheus as data base. Prometheus provides interfaces for database agents, of which the following are integrated.
 
 - <a src="https://github.com/prometheus/node_exporter">node_exporter</a>: Provides general machine information about memory, cpu, file system etc
+- <a src="https://github.com/block42-blockchain-company/lachesis_exporter">lachesis_exporter</a> : Uses the Lachesis API to provide Fantom specific metrics. It is currently under development.
 
-- <a src="https://github.com/block42-blockchain-company/lachesis_exporter">lachesis_exporter*</a>*: Uses the Lachesis API to provide Fantom specific metrics. Currently only the epoch is part of the metrics.
-
-By spinning up the fantom node monitor, all configurations and dashboards are created and all exporters are started. Feel free to use our <a src="https://hub.docker.com/repository/docker/block42blockchaincompany/fantom-node-monitor">Docker Image</a>.
+By spinning up the Fantom node monitor, all configurations and dashboards are created and all exporters are started.
 <br>
 
 ## Getting started
@@ -18,18 +17,24 @@ Start the monitor with the following command:
 python3 setup.py
 ```
 
-This will spinn up a single docker container including all necessary services and programs.
+This will spinn up a single docker container (using <a src="https://hub.docker.com/repository/docker/block42blockchaincompany/fantom-node-monitor">fantom-node-monitor image</a>) including all necessary services and programs. 
 
-You can view the dashboard by accessing the machine on port 3000.
-Log in to Grafana using the username "admin" and password "admin".
-The Fantom Node Overview Dashboard should be visible to you. 
-It may take some time until the first metrics arrive and are displayed.
+### First Steps
+
+Access your machine on port 3000. 
+The first time you access the dashboard you will need to enter the default credentials and set a new password.
+The default credentials are:
+
+Username: admin <br>
+Password: admin
+
+Once you're logged in, you should see **Fantom Node Overview** in Dashboards. Please allow some time for the first metrics to be displayed.
 
 
 ### Tear Down
 *Note: Be aware that the following will also remove all data collected!*
-Stop the containers and remove all artifcats with:
+Stop the containers and remove all artifcats (including persistent volumes) with:
+
 ```shell
 python3 tear_down.py
 ```
-
