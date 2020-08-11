@@ -1,14 +1,11 @@
 # Fantom Node Monitor
 
-The Fantom Node Monitor is currently in a mvp version.
-Its key elements are of course the Grafana dashboard for visualization and Prometheus as data source. 
-Prometheus provides interfaces for add-ons. Currently <a src="https://github.com/prometheus/node_exporter">node_exporter</a>
-as well as the currently mvp version of the lachesis_exporter.
-- *node_exporter*: Provides general machine information about memory, cpu, file system etc
-- *lachesis_exporter*: Uses the Lachesis API to provide Fantom specific metrics. Currently only the epoch is part of the metrics.
+This setup lets you monitor your Fantom node. Key elements are the Grafana dashboard for visualization and Prometheus as data base. Prometheus provides interfaces for database agents, of which the following are integrated.
 
-By spinning up the fantom node monitor, all configurations and dashboards are 
-created and all exporters are started.
+- <a src="https://github.com/prometheus/node_exporter">node_exporter</a>: Provides general machine information about memory, cpu, file system etc
+- <a src="https://github.com/block42-blockchain-company/lachesis_exporter">lachesis_exporter</a> : Uses the Lachesis API to provide Fantom specific metrics. It is currently under development.
+
+By spinning up the Fantom node monitor, all configurations and dashboards are created and all exporters are started.
 <br>
 
 ## Getting started
@@ -17,24 +14,27 @@ created and all exporters are started.
 
 Start the monitor with the following command:
 ```shell
-python3 ./setup.py
+python3 setup.py
 ```
 
-You can view the dashboard by accessing the machine on port 3000.
-Log in to Grafana using the username "admin" and password "admin".
-The Fantom Node Overview Dashboard should be visible to you. 
-It may take some time until the first metrics arrive and are displayed.
+This will spinn up a single docker container (using <a src="https://hub.docker.com/repository/docker/block42blockchaincompany/fantom-node-monitor">fantom-node-monitor image</a>) including all necessary services and programs. 
+
+### First Steps
+
+Access your machine on port 3000. 
+The first time you access the dashboard you will need to enter the default credentials and set a new password.
+The default credentials are:
+
+Username: admin <br>
+Password: admin
+
+Once you're logged in, you should see **Fantom Node Overview** in Dashboards. Please allow some time for the first metrics to be displayed.
 
 
 ### Tear Down
 *Note: Be aware that the following will also remove all data collected!*
-Stop the containers and remove all artifcats with:
-```shell
-python3 ./tear_down.py
-```
+Stop the containers and remove all artifcats (including persistent volumes) with:
 
-## Current State
-Both Grafana and Prometheus are running in a docker container and using the host network in order to communicate with the exporter.
-It is best practise to keep the exporters as close to the application as possible.
-<br>
-This is a minimal version so the whole codebase is likely to change when aiming for a production version!
+```shell
+python3 tear_down.py
+```
