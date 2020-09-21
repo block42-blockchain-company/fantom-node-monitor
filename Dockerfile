@@ -40,16 +40,18 @@ ADD ./resources/common /home/common/
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/
 ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboards/fantom_overview.json
 
-#Lachesis
-ADD ./resources/lachesis.service /etc/systemd/system/lachesis.service
-
 # Prometheus
 RUN mkdir /data
 ADD ./resources/prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
-RUN useradd -ms /bin/bash fantom
-USER fantom
+
+
+# RUN useradd -m fantom && echo "fantom:fantom" | chpasswd && adduser fantom sudo
+# USER fantom
+
+ADD ./resources/run.sh /home/
 WORKDIR /home/fantom
+
 
 CMD ["/home/run.py"]
 ENTRYPOINT ["python3"]
