@@ -33,7 +33,6 @@ RUN go install /go/src/github.com/block42-blockchain-company/lachesis_exporter
 
 # --- Configure ---
 # General
-ADD ./resources/run.py /home/
 ADD ./resources/common /home/common/
 
 # Grafana
@@ -44,14 +43,8 @@ ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboa
 RUN mkdir /data
 ADD ./resources/prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
-
-
-# RUN useradd -m fantom && echo "fantom:fantom" | chpasswd && adduser fantom sudo
-# USER fantom
-
+# Start exporters script
 ADD ./resources/run.sh /home/
-WORKDIR /home/fantom
 
 
-CMD ["/home/run.py"]
-ENTRYPOINT ["python3"]
+CMD bash /home/run.sh
