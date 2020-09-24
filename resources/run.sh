@@ -1,4 +1,8 @@
 #!/bin/bash
+# ------------------------------------------------------------------
+# Script starts processes as recommended in:
+# https://docs.docker.com/config/containers/multi-service_container/
+# ------------------------------------------------------------------
 
 # Start the node exporter
 node_exporter --path.rootfs=/host &
