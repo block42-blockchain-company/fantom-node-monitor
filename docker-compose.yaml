@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  fantom-node-monitor:
+    container_name: fantom-node-monitor
+    image: "block42blockchaincompany/fantom-node-monitor"
+    network_mode: "host"
+    pid: "host"
+    volumes:
+      - /:/host:ro,rslave
+      - prometheus-volume:/data
+
+volumes:
+  prometheus-volume:
