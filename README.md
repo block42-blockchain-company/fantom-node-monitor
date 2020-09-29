@@ -38,3 +38,18 @@ Stop the containers and remove all artifcats (including persistent volumes) with
 ```shell
 python3 tear_down.py
 ```
+
+### Contribute
+In order to implement new metrics 
+
+Retrieve the metric with the corresponding exporter ()
+
+
+Base flow:
+
+- Make modification
+- Build docker image
+- Push image to docker hub
+- Verify by running the setup.
+
+Be aware that changes made to the lachesis_exporter also need to be handled in this way.
