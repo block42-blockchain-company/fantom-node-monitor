@@ -18,7 +18,7 @@
   "links": [],
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -27,118 +27,120 @@
         "y": 0
       },
       "id": 26,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "semi-dark-blue",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 0,
+            "y": 1
+          },
+          "id": 2,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.0",
+          "targets": [
+            {
+              "expr": "current_epoch",
+              "instant": true,
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Current Epoch",
+          "transparent": true,
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "semi-dark-blue",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 2,
+            "x": 2,
+            "y": 1
+          },
+          "id": 18,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "7.2.0",
+          "targets": [
+            {
+              "expr": "block_height",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Block Height",
+          "transparent": true,
+          "type": "stat"
+        }
+      ],
       "title": "Network Metrics",
       "type": "row"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 2,
-        "x": 0,
-        "y": 1
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.2.0",
-      "targets": [
-        {
-          "expr": "current_epoch",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Current Epoch",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 2,
-        "x": 2,
-        "y": 1
-      },
-      "id": 18,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.2.0",
-      "targets": [
-        {
-          "expr": "block_height",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Block Height",
-      "transparent": true,
-      "type": "stat"
     },
     {
       "collapsed": false,
@@ -147,7 +149,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 1
       },
       "id": 24,
       "panels": [],
@@ -178,9 +180,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 17,
+        "w": 15,
         "x": 0,
-        "y": 5
+        "y": 2
       },
       "id": 30,
       "options": {
@@ -238,8 +240,8 @@
       "gridPos": {
         "h": 6,
         "w": 2,
-        "x": 17,
-        "y": 5
+        "x": 15,
+        "y": 2
       },
       "id": 33,
       "options": {
@@ -274,6 +276,65 @@
     },
     {
       "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 17,
+        "y": 2
+      },
+      "id": 39,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "node_memory_MemTotal_bytes / (1024 * 1024 * 1024) ",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Memory",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -298,7 +359,7 @@
         "h": 2,
         "w": 4,
         "x": 19,
-        "y": 5
+        "y": 2
       },
       "id": 34,
       "options": {
@@ -357,7 +418,7 @@
         "h": 2,
         "w": 4,
         "x": 19,
-        "y": 7
+        "y": 4
       },
       "id": 36,
       "options": {
@@ -392,6 +453,62 @@
     },
     {
       "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 17,
+        "y": 5
+      },
+      "id": 38,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "7.2.0",
+      "targets": [
+        {
+          "expr": "sum(node_filesystem_size_bytes) ",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "File System Size",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -416,7 +533,7 @@
         "h": 2,
         "w": 4,
         "x": 19,
-        "y": 9
+        "y": 6
       },
       "id": 35,
       "options": {
@@ -465,13 +582,13 @@
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 0,
+      "fillGradient": 5,
       "grid": {},
       "gridPos": {
         "h": 9,
         "w": 10,
         "x": 0,
-        "y": 11
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 12,
@@ -551,14 +668,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:34",
           "format": "percentunit",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1.5",
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:35",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -580,19 +699,21 @@
             "align": null
           },
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "semi-dark-green",
+                "color": "semi-dark-blue",
                 "value": null
               },
               {
-                "color": "dark-yellow",
+                "color": "#EAB839",
                 "value": 75
               },
               {
-                "color": "dark-red",
+                "color": "semi-dark-red",
                 "value": 90
               }
             ]
@@ -605,7 +726,7 @@
         "h": 9,
         "w": 4,
         "x": 10,
-        "y": 11
+        "y": 8
       },
       "id": 16,
       "options": {
@@ -654,13 +775,13 @@
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 0,
+      "fillGradient": 5,
       "grid": {},
       "gridPos": {
         "h": 9,
         "w": 9,
         "x": 14,
-        "y": 11
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 6,
@@ -777,6 +898,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:134",
           "format": "bytes",
           "label": "GB",
           "logBase": 1,
@@ -785,6 +907,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:135",
           "format": "short",
           "logBase": 1,
           "max": null,
@@ -813,13 +936,13 @@
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 0,
+      "fillGradient": 5,
       "grid": {},
       "gridPos": {
         "h": 10,
         "w": 10,
         "x": 0,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 8,
@@ -903,6 +1026,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:246",
           "format": "short",
           "label": "IO/second read (-) / write (+)",
           "logBase": 1,
@@ -911,6 +1035,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:247",
           "format": "short",
           "logBase": 1,
           "max": null,
@@ -925,72 +1050,67 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "rgba(245, 54, 54, 0.9)",
-        "rgba(237, 129, 40, 0.89)",
-        "rgba(50, 172, 45, 0.97)"
-      ],
       "datasource": "Prometheus",
-      "editable": true,
-      "error": false,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "decimals": 0,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "max": 1,
+          "min": 0,
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#E02F44",
+                "value": null
+              },
+              {
+                "color": "#F2CC0C",
+                "value": 0.1
+              },
+              {
+                "color": "#3274D9",
+                "value": 0.25
+              }
+            ]
+          },
+          "unit": "percentunit"
         },
         "overrides": []
-      },
-      "format": "percentunit",
-      "gauge": {
-        "maxValue": 1,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 10,
         "w": 4,
         "x": 10,
-        "y": 20
+        "y": 17
       },
       "id": 14,
       "interval": null,
-      "isNew": true,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "7.2.0",
       "targets": [
         {
           "expr": "min(node_filesystem_free_bytes / node_filesystem_size_bytes)",
@@ -1002,18 +1122,8 @@
           "target": ""
         }
       ],
-      "thresholds": "0.10, 0.25",
       "title": "Free disk space",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
       "aliasColors": {},
@@ -1024,17 +1134,18 @@
       "description": "Accumulated Data per Minute in Bytes",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "unit": "decBps"
         },
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 4,
+      "fillGradient": 5,
       "gridPos": {
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 28,
@@ -1061,13 +1172,19 @@
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
           "expr": "rate(node_network_transmit_bytes_total{device=\"eth0\"}[1m])",
-          "interval": "1024",
-          "legendFormat": "",
+          "interval": "",
+          "legendFormat": "eth0",
           "refId": "A"
+        },
+        {
+          "expr": "rate(node_network_transmit_bytes_total{device=\"lo\"}[1m])",
+          "interval": "",
+          "legendFormat": "loopback",
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -1091,7 +1208,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:231",
-          "format": "short",
+          "format": "decBps",
           "label": "",
           "logBase": 1,
           "max": null,
@@ -1124,15 +1241,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "semi-dark-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -1140,7 +1254,7 @@
         "h": 7,
         "w": 2,
         "x": 10,
-        "y": 30
+        "y": 27
       },
       "id": 22,
       "options": {
@@ -1182,12 +1296,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "semi-dark-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1198,7 +1308,7 @@
         "h": 7,
         "w": 2,
         "x": 12,
-        "y": 30
+        "y": 27
       },
       "id": 20,
       "options": {
