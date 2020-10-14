@@ -27,6 +27,7 @@ def setup():
         node_monitor_startup = subprocess.run(command.split())
         node_monitor_startup.check_returncode()
     except subprocess.CalledProcessError as e:
+        print(e.output)
         tear_down()
         setup()
 
