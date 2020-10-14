@@ -1,4 +1,5 @@
 import subprocess
+from tear_down import *
 
 
 def setup():
@@ -25,8 +26,9 @@ def setup():
 
         node_monitor_startup = subprocess.run(command.split())
         node_monitor_startup.check_returncode()
-    except Exception as e:
-        print(e)
+    except subprocess.CalledProcessError as e:
+        tear_down()
+        setup()
 
 
 if __name__ == "__main__":
