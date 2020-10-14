@@ -8,7 +8,7 @@
 node_exporter --path.rootfs=/host &
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_first_process: $status"
+  echo "Failed to start node exporter: $status"
   exit $status
 fi
 
@@ -17,7 +17,7 @@ fi
 lachesis_exporter &
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_second_process: $status"
+  echo "Failed to start lachesis exporter: $status"
   # exit $status
 fi
 
@@ -25,7 +25,7 @@ fi
 service grafana-server start &
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_second_process: $status"
+  echo "Failed to start grafana server: $status"
   # exit $status
 fi
 
@@ -35,7 +35,7 @@ prometheus \
 --storage.tsdb.path=/data &
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_second_process: $status"
+  echo "Failed to start prometheus: $status"
   # exit $status
 fi
 
@@ -45,8 +45,7 @@ fi
 # more than one service in a container. The container exits with an error
 # if it detects that either of the processes has exited.
 # Otherwise it loops forever, waking up every 60 seconds
-
-while sleep 30; do
+while sleep 60; do
   ps aux |grep node_exporter |grep -q -v grep
   NODE_EXPORTER_STATUS=$?
   ps aux |grep prometheus |grep -q -v grep
@@ -55,15 +54,14 @@ while sleep 30; do
   GRAFANA_STATUS=$?
   ps aux |grep lachesis_exporter |grep -q -v grep
   LACHESIS_EXPORTER_STATUS=$?
-  echo "Node_exporter: $NODE_EXPORTER_STATUS"
-  echo "Prometheus: $PROMETHEUS_STATUS"
-  echo "Grafana: $GRAFANA_STATUS"
-  echo "Lachesis: $LACHESIS_EXPORTER_STATUS"
-  # If the greps above find anything, they exit with 0 status
-  # If they are not both 0, then something is wrong
-  if [ $NODE_EXPORTER_STATUS -ne 0 -o $LACHESIS_EXPORTER_STATUS -ne 0 ] ||
-     [ $GRAFANA_STATUS -ne 0 -o $PROMETHEUS_STATUS -ne 0 ]; then
-    echo "One of the processes has already exited."
-    exit 1
+
+  if [ $NODE_EXPORTER_STATUS -ne 0 ]; then
+    echo "Node exporter exited unexpectedly."
+  elif [ $PROMETHEUS_STATUS -ne 0 ]; then
+    echo "Prometheus exited unexpectedly."
+  elif [ $GRAFANA_STATUS -ne 0 ]; then
+    echo "Grafana exited unexpectedly."
+  elif [ $LACHESIS_EXPORTER_STATUS -ne 0 ]; then
+    echo "Lachesis exporter exited unexpectedly."
   fi
 done
