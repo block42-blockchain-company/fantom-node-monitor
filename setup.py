@@ -23,8 +23,8 @@ def setup():
           --name fantom-node-monitor \
           block42blockchaincompany/fantom-node-monitor'
 
-        node_monitor_startup = subprocess.Popen(command.split())
-        node_monitor_startup.wait()
+        node_monitor_startup = subprocess.run(command.split())
+        node_monitor_startup.check_returncode()
     except Exception as e:
         print(e)
 
