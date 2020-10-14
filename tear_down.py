@@ -1,5 +1,4 @@
 import subprocess
-from resources.common import consts
 
 
 def tear_down():
