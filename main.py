@@ -4,7 +4,7 @@ import sys
 
 
 def setup():
-    print("==== Fantom Node Monitor Setup ====\n")
+    print("==== Fantom Node Monitor Setup ====")
 
     print("Create persistent volumes:")
 
@@ -13,7 +13,7 @@ def setup():
 
     prometheus_volume_creation.wait()
 
-    print("Start container")
+    print("Start container\n")
 
     # "host" attributes necessary in order for node_exporter to access host machine metrics
     command = 'docker run -d \
@@ -34,7 +34,7 @@ def setup():
 
 
 def tear_down():
-    print("==== Fantom Node Monitor Teardown ====\n")
+    print("==== Fantom Node Monitor Teardown ====")
 
     command = "docker rm -f fantom-node-monitor"
     rm_container = subprocess.Popen(command.split())
@@ -44,21 +44,30 @@ def tear_down():
     rm_prometheus_volume = subprocess.Popen(command.split())
     rm_prometheus_volume.wait()
 
-    print("Teardown complete!")
+    print("Teardown complete!\n")
+
+
+def build():
+    command = "docker build -t block42blockchaincompany/fantom-node-monitor ."
+    node_monitor_startup = subprocess.Popen(command.split())
+    node_monitor_startup.wait()
 
 
 def main():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest='command', title='command')
     subparsers.required = True
-    parser_e = subparsers.add_parser('setup', help='Start your docker container to monitor your fantom node.')
-    parser_d = subparsers.add_parser('teardown', help='Stop monitoring fantom node and clean-up.')
+    subparsers.add_parser('setup', help='Start your docker container to monitor your fantom node.')
+    subparsers.add_parser('teardown', help='Stop monitoring fantom node and clean-up.')
+    subparsers.add_parser('build', help='Build a new docker image.')
 
     args = parser.parse_args()
-    if args == "setup":
+    if args.command == "setup":
         setup()
-    elif args == "teardown":
+    elif args.command == "teardown":
         tear_down()
+    elif args.command == "build":
+        build()
 
 
 if __name__ == "__main__":

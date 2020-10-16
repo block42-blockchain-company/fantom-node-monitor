@@ -28,13 +28,10 @@ RUN go get github.com/prometheus/node_exporter ; exit 0
 RUN make /go/src/github.com/prometheus/node_exporter
 
 # Lachesis Exporter
-RUN go get github.com/block42-blockchain-company/lachesis_exporter
-RUN go install /go/src/github.com/block42-blockchain-company/lachesis_exporter
+#RUN go get github.com/block42-blockchain-company/lachesis_exporter
+#RUN go install /go/src/github.com/block42-blockchain-company/lachesis_exporter
 
 # --- Configure ---
-# General
-ADD ./resources/common /home/common/
-
 # Grafana
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/
 ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboards/fantom_overview.json
