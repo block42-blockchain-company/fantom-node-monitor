@@ -1,5 +1,6 @@
+import argparse
 import subprocess
-from tear_down import *
+import sys
 
 
 def setup():
@@ -32,5 +33,33 @@ def setup():
         setup()
 
 
+def tear_down():
+    print("==== Fantom Node Monitor Teardown ====\n")
+
+    command = "docker rm -f fantom-node-monitor"
+    rm_container = subprocess.Popen(command.split())
+    rm_container.wait()
+
+    command = "docker volume rm prometheus-volume"
+    rm_prometheus_volume = subprocess.Popen(command.split())
+    rm_prometheus_volume.wait()
+
+    print("Teardown complete!")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(dest='command', title='command')
+    subparsers.required = True
+    parser_e = subparsers.add_parser('setup', help='Start your docker container to monitor your fantom node.')
+    parser_d = subparsers.add_parser('teardown', help='Stop monitoring fantom node and clean-up.')
+
+    args = parser.parse_args()
+    if args == "setup":
+        setup()
+    elif args == "teardown":
+        tear_down()
+
+
 if __name__ == "__main__":
-    setup()
+    sys.exit(main())
