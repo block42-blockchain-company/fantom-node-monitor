@@ -28,16 +28,19 @@ RUN go get github.com/prometheus/node_exporter ; exit 0
 RUN make /go/src/github.com/prometheus/node_exporter
 
 # Lachesis Exporter
-RUN go get github.com/block42-blockchain-company/lachesis_exporter
-RUN go install /go/src/github.com/block42-blockchain-company/lachesis_exporter
+ARG lachesis_exporter_path=/go/src/github.com/block42-blockchain-company/lachesis_exporter
+RUN mkdir -p $lachesis_exporter_path
+RUN git clone https://github.com/block42-blockchain-company/lachesis_exporter.git  $lachesis_exporter_path
+RUN cd $lachesis_exporter_path && git checkout feature/metrics
+RUN go get -u $lachesis_exporter_path
+RUN go install $lachesis_exporter_path
+#RUN go get github.com/block42-blockchain-company/lachesis_exporter
+#RUN go intsall github.com/block42-blockchain-company/lachesis_exporter
 
 # --- Configure ---
-# General
-ADD ./resources/common /home/common/
-
 # Grafana
 ADD ./resources/grafana/provisioning /etc/grafana/provisioning/
-ADD ./resources/grafana//dashboard/fantom_overview.json /var/lib/grafana/dashboards/fantom_overview.json
+ADD ./resources/grafana/dashboard/fantom_overview.json /var/lib/grafana/dashboards/fantom_overview.json
 
 # Prometheus
 RUN mkdir /data
