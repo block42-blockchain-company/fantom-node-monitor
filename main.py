@@ -59,7 +59,7 @@ def main():
     subparsers.required = True
     subparsers.add_parser('setup', help='Start your docker container to monitor your fantom node.')
     subparsers.add_parser('teardown', help='Stop monitoring fantom node and clean-up.')
-    subparsers.add_parser('build', help='Build a new docker image.')
+    subparsers.add_parser('build', help='Build a new docker image from source.')
 
     args = parser.parse_args()
     if args.command == "setup":

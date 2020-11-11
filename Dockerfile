@@ -31,11 +31,11 @@ RUN make /go/src/github.com/prometheus/node_exporter
 ARG lachesis_exporter_path=/go/src/github.com/block42-blockchain-company/lachesis_exporter
 RUN mkdir -p $lachesis_exporter_path
 RUN git clone https://github.com/block42-blockchain-company/lachesis_exporter.git  $lachesis_exporter_path
-RUN cd $lachesis_exporter_path && git checkout feature/metrics
+RUN cd $lachesis_exporter_path && git checkout feature/metrics && git pull
 RUN go get -u $lachesis_exporter_path
 RUN go install $lachesis_exporter_path
 #RUN go get github.com/block42-blockchain-company/lachesis_exporter
-#RUN go intsall github.com/block42-blockchain-company/lachesis_exporter
+#RUN go install github.com/block42-blockchain-company/lachesis_exporter
 
 # --- Configure ---
 # Grafana
