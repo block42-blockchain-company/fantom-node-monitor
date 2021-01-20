@@ -10,11 +10,19 @@ By spinning up the Fantom node monitor, all configurations and dashboards are cr
 
 ## Getting started
 
+### Build
+Start the docker build:
+```shell
+python3 main.py build
+```
+
+This will build a docker image from the Dockerfile.
+
 ### Setup
 
 Start the monitor with the following command:
 ```shell
-python3 setup.py
+python3 main.py setup
 ```
 
 This will spinn up a single docker container (using <a src="https://hub.docker.com/repository/docker/block42blockchaincompany/fantom-node-monitor">fantom-node-monitor image</a>) including all necessary services and programs. 
@@ -36,5 +44,5 @@ Once you're logged in, you should see **Fantom Node Overview** in Dashboards. Pl
 Stop the containers and remove all artifcats (including persistent volumes) with:
 
 ```shell
-python3 tear_down.py
+python3 main.py teardown
 ```
